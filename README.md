@@ -24,9 +24,8 @@ How to run the project:
   - `/scripts`: Individual scripts or modules.
   - `/notebooks`: Jupyter notebooks or similar.
 - `/tests`: Test cases for your application.
-- `/docs`: Additional documentation.
-  - `/report`: Documentation in text format (e.g., LaTeX or Word)
-  - `/pages`: Documentation in rich format (e.g., HTML, Markdown)
+- `/docs`: Additional documentation in text format (e.g., LaTeX or Word)
+- `/public`: Pages in rich format (e.g., HTML, Markdown, JavaScript)
 
 ## Contribution
 Guidelines for contributing to the project (if applicable).
