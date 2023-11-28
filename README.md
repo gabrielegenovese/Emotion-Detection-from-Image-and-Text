@@ -25,6 +25,8 @@ How to run the project:
   - `/notebooks`: Jupyter notebooks or similar.
 - `/tests`: Test cases for your application.
 - `/docs`: Additional documentation.
+  - `/report`: Documentation in text format (e.g., LaTeX or Word)
+  - `/pages`: Documentation in rich format (e.g., HTML, Markdown)
 
 ## Contribution
 Guidelines for contributing to the project (if applicable).
