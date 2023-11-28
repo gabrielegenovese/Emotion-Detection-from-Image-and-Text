@@ -24,8 +24,9 @@ How to run the project:
   - `/scripts`: Individual scripts or modules.
   - `/notebooks`: Jupyter notebooks or similar.
 - `/tests`: Test cases for your application.
-- `/docs`: Additional documentation in text format (e.g., LaTeX or Word)
-- `/public`: Pages in rich format (e.g., HTML, Markdown, JavaScript)
+- `/docs`: Additional documentation in text format (e.g., LaTeX or Word).
+- `/public`: Folder where GitLab pages will write static website. 
+- `index.html`: Documentation in rich format (e.g., HTML, Markdown, JavaScript), will populate `public`.
 
 ## Contribution
 Guidelines for contributing to the project (if applicable).
