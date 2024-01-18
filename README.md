@@ -1,12 +1,12 @@
-# Project Title: [Project Name]
+# Project Title: Emotion Detection from Image and Text
 
 ## Overview
-Briefly describe what this project is about. Include the main objective and potential impact.
+The main goal is to test the behaviour of a neural network in deteting the emotion of an image combined with some text.
 
 ## Installation and Setup
-Instructions on setting up the project environment:
 1. Clone the repository: `git clone [repository link]`
-2. Install dependencies: `pip install -r requirements.txt`
+2. Download the image dataset from this [link](https://www.kaggle.com/datasets/msambare/fer2013?resource=download) and use `./scr/script/custom_unzip.sh [/path/to/archive.zip]`
+3. If you want to regenerate the processed datased, use `src/script/merge_dataset.py`
 
 ## Data
 Describe the data used in this project:
