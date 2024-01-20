@@ -5,8 +5,8 @@ The main goal is to test the behaviour of a neural network in deteting the emoti
 
 ## Installation and Setup
 1. Clone the repository: `git clone [repository link]`
-2. Download the image dataset from this [link](https://www.kaggle.com/datasets/msambare/fer2013?resource=download) and use `./scr/script/custom_unzip.sh [/path/to/archive.zip]`
-3. If you want to regenerate the processed datased, use `src/script/merge_dataset.py`
+2. Download the image dataset from this [link](https://www.kaggle.com/datasets/msambare/fer2013?resource=download) and use `./src/scripts/custom_unzip.sh [/path/to/archive.zip]`
+3. If you want to regenerate the processed datased, use `src/scripts/merge_dataset.py`
 
 ## Data
 Describe the data used in this project:
