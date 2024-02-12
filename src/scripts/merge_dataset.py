@@ -7,9 +7,14 @@ import random
 reponame = "emotion-detection-from-image-and-text"
 basepath = os.path.join(os.getcwd().split(reponame)[0], reponame)
 trainpath = os.path.join(basepath, "data/raw/train_ekmann.csv")
+testpath = os.path.join(basepath, "data/raw/test_ekmann.csv")
 imagepath = os.path.join(
     basepath,
     "data/raw/emotion_facial_images/train",
+)
+imagetestpath = os.path.join(
+    basepath,
+    "data/raw/emotion_facial_images/test",
 )
 newfilepath = os.path.join(
     basepath,
@@ -34,8 +39,8 @@ def get_images_name(folder):
         return f"Error: {str(e)}"
 
 
-def create_dataset_from_emotion(csvfile, emotion):
-    emotiondirpath = os.path.join(imagepath, emotion)
+def create_dataset_from_emotion(basepath, csvfile, emotion):
+    emotiondirpath = os.path.join(basepath, emotion)
     filenames = get_images_name(emotiondirpath)
     random.shuffle(filenames)
     res = []
@@ -58,9 +63,19 @@ with open(trainpath, newline="") as train_ekmann_f:
     final_list = []
     dir_list = os.listdir(imagepath)
     for emotion_dir in dir_list:
-        final_list += create_dataset_from_emotion(csvfile, emotion_dir)
+        final_list += create_dataset_from_emotion(imagepath, csvfile, emotion_dir)
+    
+    with open(testpath, newline="") as test_ekmann_f:
+        test_ekmann_csv = csv.reader(test_ekmann_f, delimiter=",", quotechar='"')
+        csvfile = []
+        for s in test_ekmann_csv:
+            csvfile.append(s)
+            
+        dir_list = os.listdir(imagetestpath)
+        for emotion_dir in dir_list:
+            final_list += create_dataset_from_emotion(imagetestpath, csvfile, emotion_dir)
 
-    with open(newfilepath, "w", encoding="UTF8") as newfile_csv:
-        spamwriter = csv.writer(newfile_csv, delimiter=",")
-        for line in final_list:
-            spamwriter.writerow(line)
+        with open(newfilepath, "w", encoding="UTF8") as newfile_csv:
+            spamwriter = csv.writer(newfile_csv, delimiter=",")
+            for line in final_list:
+                spamwriter.writerow(line)
