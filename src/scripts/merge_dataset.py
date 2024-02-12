@@ -60,7 +60,7 @@ with open(trainpath, newline="") as train_ekmann_f:
     for s in train_ekmann_csv:
         csvfile.append(s)
 
-    final_list = []
+    final_list = [["text","image","emotion"]]
     dir_list = os.listdir(imagepath)
     for emotion_dir in dir_list:
         final_list += create_dataset_from_emotion(imagepath, csvfile, emotion_dir)
