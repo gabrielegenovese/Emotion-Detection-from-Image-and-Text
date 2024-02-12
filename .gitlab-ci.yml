@@ -1,11 +1,13 @@
-pages:
+stages:
+  - deploy
+
+deploy:
   stage: deploy
   script:
-    - mkdir .public
-    - cp docs/REPORT_AI.pdf .public
-    - mv .public public
+    - mkdir public
+    - cp docs/REPORT_AI.pdf public/  
   artifacts:
     paths:
-      - public
+      - public/
   only:
     - main
