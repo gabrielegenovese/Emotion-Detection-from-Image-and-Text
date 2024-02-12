@@ -4,7 +4,6 @@ stages:
 deploy:
   stage: deploy
   script:
-    - mkdir public
     - cp docs/REPORT_AI.pdf public/  
   artifacts:
     paths:
