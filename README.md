@@ -15,7 +15,7 @@ The documentation of the project is available [here](https://emotion-detection-f
 ## Data
 The data used in this project are the following:
 - **Raw Data**: location of the Ekmann dataset and Kaggle's image dataset
-- **Processed Data**: location of the custom dataset created with a scrip
+- **Processed Data**: location of the custom dataset created with a script
 
 ## Contact
 Gabriele Genovese - gabriele.genovese2@studio.unibo.it
