@@ -21,6 +21,8 @@ newfilepath = os.path.join(
     "data/processed/text_image_emotion_random.csv",
 )
 
+emotions_list = ["anger", "disgust", "fear", "neutral", "sadness", "surprise", "joy"]
+
 
 def get_images_name(folder):
     try:
@@ -42,13 +44,13 @@ def get_images_name(folder):
 def create_dataset_from_emotion(basepath, csvfile, emotion):
     emotiondirpath = os.path.join(basepath, emotion)
     filenames = get_images_name(emotiondirpath)
-    random.shuffle(csvfile)
     random.shuffle(filenames)
     res = []
     counter = 0
     for s in csvfile:
-        res.append([s[0], filenames[counter], emotion])
-        counter += 1
+        if s[1] == emotion:
+            res.append([s[0], filenames[counter], random.choice(emotions_list)])
+            counter += 1
         if counter >= len(filenames):
             break
     return res
@@ -60,7 +62,8 @@ with open(trainpath, newline="") as train_ekmann_f:
     for s in train_ekmann_csv:
         csvfile.append(s)
 
-    final_list = [["text","image","emotion"]]
+    final_list = []
+    # final_list = [["text","image","emotion"]]
     dir_list = os.listdir(imagepath)
     for emotion_dir in dir_list:
         final_list += create_dataset_from_emotion(imagepath, csvfile, emotion_dir)
