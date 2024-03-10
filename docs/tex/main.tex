@@ -241,8 +241,8 @@ Tramite questo semplice modello con $27335$ parametri si raggiunge una precision
 \bigskip
 
 \begin{lstlisting}[language=Python, caption=Risultati ottenuti modello lineare]
-80/80 [==============================] - 0s 3ms/step - loss: 1.8592 - accuracy: 0.2965
-Loss: 1.86, Accuracy: 0.3
+80/80 [==============================] - 0s 3ms/step - loss: 1.7102 - accuracy: 0.3106 - precision: 0.5093 - recall: 0.0216
+Loss: 1.71, Accuracy: 0.31
 \end{lstlisting}
 
 \subsection{Secondo modello (EmotionEnhance)}
@@ -277,8 +277,8 @@ Normalized image [[0.22352941 0.21176471 0.21176471 ... 0.27058824 0.24705882 0.
 
 Applicando una semplice operazione di normalizzazione raggiungiamo con lo stesso modello una precisione del $45\%$ (loss: $1.47$) migliorando di $3.2$ volte rispetto a un modello casuale.
 \begin{lstlisting}[language=Python, caption=Risultati modello normalizzato]
-80/80 [==============================] - 0s 3ms/step - loss: 1.4703 - accuracy: 0.4498
-Loss: 1.47, Accuracy: 0.45
+80/80 [==============================] - 0s 2ms/step - loss: 1.4601 - accuracy: 0.4518 - precision_13: 0.6210 - recall_13: 0.2063
+Loss: 1.46, Accuracy: 0.45
 \end{lstlisting}
 
 \subsection{Terzo modello (EmotionEvolve)}
@@ -312,8 +312,8 @@ model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['ac
 Aggiungendo dei layer che vanno ad operare su i due input abbiamo un aumento di circa 9.2 volte dei parametri arrivando a una precisione del 63\% circa (loss: 1.03) che corrisponde a circa 4.6 volte migliore del modello randomico.
 
 \begin{lstlisting}[language=Python, caption=Risultati terzo modello]
-74/74 [==============================] - 1s 12ms/step - loss: 1.0302 - accuracy: 0.6329
-Loss: 1.03, Accuracy: 0.63
+80/80 [==============================] - 1s 10ms/step - loss: 0.9787 - accuracy: 0.6604 - precision_14: 0.7538 - recall_14: 0.5608
+Loss: 0.98, Accuracy: 0.66
 \end{lstlisting}
 
 
@@ -342,8 +342,8 @@ disgust     0.022678
 
 Otteniamo così una precisione del $64\%$, praticamente identica alla prova precendente. Quindi la lunghezza delle frasi non ho una ripercussione marcata sul risultato della predizione. Nei prossimi tentativi continueremo quindi ad usare tutto il dataset.
 \begin{lstlisting}[language=Python, caption=Risultati quarto modello]
-47/47 [==============================] - 14s 9ms/step - loss: 1.0405 - accuracy: 0.6418
-Loss: 1.04, Accuracy: 0.64
+51/51 [==============================] - 0s 9ms/step - loss: 1.1331 - accuracy: 0.5950 - precision_15: 0.7474 - recall_15: 0.4474
+Loss: 1.13, Accuracy: 0.59
 \end{lstlisting}
 
 \subsection{Quinto modello (EmotionRefine)}
@@ -387,8 +387,8 @@ def df_preprocessing(df_pre):
 
 In questo caso il pre-processing non ha portato grandi benefici a riguardo, ottenendo la stessa percentuale di accuracy. Di conseguenza non verrà utilizzato per la prova successiva.
 \begin{lstlisting}[language=Python, caption=Risultati modello normalizzazione migliorata]
-74/74 [==============================] - 1s 9ms/step - loss: 1.0523 - accuracy: 0.6446
-Loss: 1.05, Accuracy: 0.64
+82/82 [==============================] - 1s 10ms/step - loss: 1.0767 - accuracy: 0.6256 - precision_16: 0.7433 - recall_16: 0.4981
+Loss: 1.08, Accuracy: 0.63
 \end{lstlisting}
 
 
@@ -419,60 +419,104 @@ model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['ac
 Il modello ha impiegato più tempo rispetto agli altri per eseguire il training. I parametri sono diminuiti, ma la precisione è salita anche se di poco.
 
 \begin{lstlisting}
-Epoch 97/100
-585/585 [==============================] - 21s 36ms/step - loss: 0.5546 - accuracy: 0.8200 - val_loss: 0.9311 - val_accuracy: 0.6596
-117/117 [==============================] - 1s 10ms/step - loss: 0.9222 - accuracy: 0.6782
-Loss: 0.92, Accuracy: 0.68
+80/80 [==============================] - 0s 4ms/step - loss: 0.8812 - accuracy: 0.6922 - precision_4: 0.7824 - recall_4: 0.5808
+Loss: 0.88, Accuracy: 0.69
 \end{lstlisting}
 
-\newpage
+\subsection{Modello con dataset randomizzato}
+Abbiamo sperimentato l'ultimo modello creato andando a modificare il dataset. Il dataset \verb|text_image_emotion_random.csv|, che viene creato con lo script \verb|merge_dataset_randomly.py|, mischia il testo associato all'emozione in modo \textbf{randomico}.
+
+\begin{lstlisting}
+113/113 [==============================] - 2s 14ms/step - loss: 1.7825 - accuracy: 0.3734
+Loss: 1.78, Accuracy: 0.37
+\end{lstlisting}
+
+Il modello ha prodotto chiaramente risultati non soddisfacenti, in particolare una accuracy del $37\%$ e una loss di $1.78$.
+Nonostante il testo non combaci con l'immagine, il modello riesce a capire correttamente l'emozione meglio di un modello completamente randomico.
 
 \section{Risultati Sperimentali}
 I risultati sperimentali ottenuti dalla valutazione dei modelli proposti per l'emotion detection mostrano un significativo miglioramento delle prestazioni rispetto a un modello casuale. 
 
 \bigskip
 
-Il primo modello, basato su layer densi senza ulteriori elaborazioni, ha raggiunto una precisione di circa il 35\% e una loss di 1.78. Questo risultato indica un'efficacia superiore rispetto a un modello casuale, con un miglioramento di circa 2.4 volte.
+Il primo modello, basato su layer densi senza ulteriori elaborazioni, ha raggiunto una accuracy di circa il 31\% e una loss di 1.71. Questo risultato indica un'efficacia superiore rispetto a un modello casuale, con un miglioramento di circa 2.4 volte.
 
 \bigskip
 
-Nel secondo modello, l'introduzione della normalizzazione delle immagini ha portato a un'ulteriore miglioramento delle prestazioni. La precisione è aumentata al 45\%, con una loss di 1.48. Questo suggerisce che la normalizzazione delle immagini ha contribuito a una migliore convergenza del modello durante l'addestramento.
+Nel secondo modello, l'introduzione della normalizzazione delle immagini ha portato a un'ulteriore miglioramento delle prestazioni. La accuracy è aumentata al 45\%, con una loss di 1.46. Questo suggerisce che la normalizzazione delle immagini ha contribuito a una migliore convergenza del modello durante l'addestramento.
 
 \bigskip
 
-Al terzo modello, che ha introdotto layer più complessi come l'embedding per il testo e layer convoluzionali per le immagini, ha raggiunto una precisione del 66\% e una loss di 0.98. Questo rappresenta un significativo miglioramento rispetto ai modelli precedenti, con un'efficacia circa 4.7 volte superiore rispetto a un modello casuale, da notare però l'aumento del tempo di training per singola epoca.
+Al terzo modello, che ha introdotto layer più complessi come l'embedding per il testo e layer convoluzionali per le immagini, ha raggiunto una accuracy del 66\% e una loss di 0.98. Questo rappresenta un significativo miglioramento rispetto ai modelli precedenti, con un'efficacia circa 4.7 volte superiore rispetto a un modello casuale, da notare però l'aumento del tempo di training per singola epoca.
 
 \bigskip
 
-Nel quarto modello sono stati applicati dei filtri sulla lunghezza delle frasi, normalizzandole ad una dimensione ragionevole, ottenendo così nelle frasi dei pesi più uniformi e sono stati abbassati i filtri convoluzionali. Ottenendo sempre una precisione del 64\% e una loss di 1.04 ma in un tempo notevolmente ridotto.
-
-\bigskip
-
-
-Nel quinto modello abbiamo migliorato il preprocessing del testo applicando diverse funzioni per il miglioramento del testo da analizzare. Anche in questo caso abbiamo ottenuto una precisione del 64\% e una loss di 1.05.
+Nel quarto modello sono stati applicati dei filtri sulla lunghezza delle frasi, normalizzandole ad una dimensione ragionevole, ottenendo così nelle frasi dei pesi più uniformi e sono stati abbassati i filtri convoluzionali. Ottenendo sempre una accuracy del 59\% e una loss di 1.13 ma in un tempo notevolmente ridotto.
 
 \bigskip
 
 
-Infine nel sesto e ultimo modello abbiamo aggiunto un layer di normalizzazione sul testo in input. L'obbiettivo era quello di standardizzare il testo per renderlo rilevante quanto le immagini. Invece, per la parte delle immagini abbiamo aggiunto un altro layer convoluzionale e un altro MaxPooling per vedere se faceva un'analisi più precisa. Ottenendo così una precisione del 68\% e una loss del $0.92$.
+Nel quinto modello abbiamo migliorato il preprocessing del testo applicando diverse funzioni per il miglioramento del testo da analizzare. Anche in questo caso abbiamo ottenuto una accuracy del 63\% e una loss di 1.08.
 
-\begin{table}[h]
+\bigskip
+
+
+Infine, nel sesto e ultimo modello abbiamo aggiunto un layer di normalizzazione sul testo in input. L'obbiettivo era quello di standardizzare il testo per renderlo rilevante quanto le immagini. Invece, per la parte delle immagini abbiamo aggiunto un altro layer convoluzionale e un altro MaxPooling per vedere se faceva un'analisi più precisa. Ottenendo così una accuracy del 69\% e una loss del $0.88$.
+
+\begin{table}[H]
 \begin{adjustwidth}{-0.5cm}{}
 \centering
 \begin{tabular}{@{}llllll@{}}
 \toprule
-\textbf{Modello} & \textbf{Precisione} & \textbf{Loss} & \textbf{Parametri} & \textbf{Tempo su epoca} & \textbf{Epoche}  \\ \midrule
-1) EmotionBoost & 30\% & 1.86 & 27335 & Circa 5 sec  & 31 \\
-2) EmotionEnhance & 45\% & 1.47 & 27335 & Circa 4 sec & 42 \\
-3) EmotionEvolve & 63\% & 1.03 & 280727 & Circa 27 sec & 77 \\
-4) EmotionFilter & 64\% & 1.04 & 250463 & Circa 14 sec & 95 \\
-5) EmotionRefine & 65\% & 0.99 & 253823 & Circa 14 sec & 87 \\
-6) EmotionNorm & 68\% & 0.92 & 190112 & Circa 21 sec & 97\\ \bottomrule
+\textbf{Modello} & \textbf{Accuracy} & \textbf{Loss} & \textbf{Parametri} & \textbf{Tempo su epoca} & \textbf{Epoche}  \\ \midrule
+1) EmotionBoost & 31\% & 1.71 & 27335 & Circa 4 sec  & 14 \\
+2) EmotionEnhance & 45\% & 1.46 & 27335 & Circa 4 sec & 40 \\
+3) EmotionEvolve & 66\% & 0.98 & 280727 & Circa 27 sec & 16 \\
+4) EmotionFilter & 59\% & 1.13 & 250463 & Circa 14 sec & 13 \\
+5) EmotionRefine & 63\% & 1.08 & 253823 & Circa 14 sec & 94 \\
+6) EmotionNorm & 69\% & 0.88 & 186512 & Circa 5 sec & 28\\ \bottomrule
 \end{tabular}
 \caption{Risultati sperimentali dei modelli per l'emotion detection}
 \label{tab:results}
 \end{adjustwidth}
 \end{table}
+
+\subsection{Confronto tra modelli differenti}
+
+Dopo aver sperimentato con diversi metodi i miglioramenti del modello con immagine e testo, lo abbiamo confrontato rispettivamente con modelli di:
+\begin{enumerate}
+    \item Immagine
+    \item Testo
+    \item Testo + Immagine
+\end{enumerate}
+
+Ottenendo così i seguenti risultati, che riportano il modello con testo e immagine migliore degli altri. Di seguito mostriamo i risultati in tabella:
+
+
+\begin{table}[H]
+\begin{adjustwidth}{-0.5cm}{}
+\centering
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{Modello} & 
+\textbf{Accuracy} &
+\textbf{Loss} &
+\textbf{Parametri} &
+\textbf{Precision} &
+\textbf{Recall}
+\\ \midrule
+ Testo & 60\%  & 1.12 & 187167  & 72\% & 40\%  \\
+ Immagine & 61\% & 1.06 & 24063 & 76\% & 45\% \\
+ Testo + immagine & 69\% & 0.88 & 186512 & 78\% & 58\% \\
+\bottomrule
+\end{tabular}
+\caption{Risultati sperimentali tra modelli differenti}
+\label{tab:results}
+\end{adjustwidth}
+\end{table}
+
+
+I modelli presi in esame di testo e immagine per la tabella sono i migliori che abbiamo prodotto. La fusione dei due modelli porta quindi ha una miglioria su ogni parametro: in particolare abbiamo un +8\% su accuracy, -0.18 su loss, +2\% su precision e +13\% su recall. I parametri del modello concatenato si allineano a quelli del testo. Abbiamo quindi mostrato che se vengono concatenati due modelli che vogliono estrapolare la stessa feature migliorano tutti i parametri.
 
 \newpage 
 
