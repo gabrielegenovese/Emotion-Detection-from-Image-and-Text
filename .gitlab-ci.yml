@@ -8,7 +8,7 @@ compile_pdf:
   script: cd docs && pdflatex main.tex
   artifacts:
     paths:
-      - main.pdf
+      - docs/main.pdf
 
 pages:
   stage: deploy
