@@ -2,7 +2,7 @@
 
 ## Overview
 The main goal is to test the behaviour of a neural network in deteting the emotion of an image combined with some text.
-The documentation of the project is available [here](https://emotion-detection-from-image-and-text-gabrigeno-0342883c89cf315.gitlab.io/REPORT_AI.pdf).
+The documentation of the project is available [here](https://emotion-detection-from-image-and-text-gabrigeno-0342883c89cf315.gitlab.io/main.pdf).
 
 ## Setup and usage
 1. Clone the repository: `git clone [repository link]`
