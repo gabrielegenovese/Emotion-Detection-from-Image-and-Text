@@ -4,20 +4,20 @@ stages:
 
 compile_pdf:
   stage: build
-  image: timnn/texlive  # use a Docker image for LaTeX from https://hub.docker.com/
-  script: pdflatex docs/tex/main.tex  # build the pdf just as you would on your computer
+  image: timnn/texlive
+  script: cd docs && pdflatex main.tex
   artifacts:
-    paths: 
-      - main.pdf  # instruct GitLab to keep the main.pdf file
+    paths:
+      - main.pdf
 
 pages:
   stage: deploy
   script:
-    - mkdir public  # create a folder called public
-    - cp main.pdf public  # copy the pdf file into the public folder
+    - mkdir public
+    - cp docs/main.pdf public
   artifacts:
-    paths: 
-      - public  # instruct GitLab to keep the public folder
-  only: 
-    - main  # deploy the pdf only for commits made to the master branch 
+    paths:
+      - public
+  only:
+    - main
 
