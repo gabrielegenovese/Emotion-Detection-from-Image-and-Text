@@ -1,4 +1,4 @@
-# Project Title: Emotion Detection from Image and Text
+# Emotion Detection from Image and Text
 
 ## Overview
 The main goal is to test the behaviour of a neural network in deteting the emotion of an image combined with some text.
