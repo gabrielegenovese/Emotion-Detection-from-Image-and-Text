@@ -484,9 +484,9 @@ Infine, nel sesto e ultimo modello abbiamo aggiunto un layer di normalizzazione 
 
 Dopo aver sperimentato con diversi metodi i miglioramenti del modello con immagine e testo, lo abbiamo confrontato rispettivamente con modelli di:
 \begin{enumerate}
-    \item Immagine
-    \item Testo
-    \item Testo + Immagine
+    \item EmotionExpress, che prende in input immagini
+    \item EmotionShout, che prende in input testo
+    \item EmotionNorm, che prende in input la combinazione di testo e immagine
 \end{enumerate}
 
 Ottenendo così i seguenti risultati, che riportano il modello con testo e immagine migliore degli altri. Di seguito mostriamo i risultati in tabella:
@@ -495,18 +495,19 @@ Ottenendo così i seguenti risultati, che riportano il modello con testo e immag
 \begin{table}[H]
 \begin{adjustwidth}{-0.5cm}{}
 \centering
-\begin{tabular}{@{}llllll@{}}
+\begin{tabular}{@{}lllllll@{}}
 \toprule
 \textbf{Modello} & 
+\textbf{Tipo di input} & 
 \textbf{Accuracy} &
 \textbf{Loss} &
 \textbf{Parametri} &
 \textbf{Precision} &
 \textbf{Recall}
 \\ \midrule
- Testo & 60\%  & 1.12 & 187167  & 72\% & 40\%  \\
- Immagine & 61\% & 1.06 & 24063 & 76\% & 45\% \\
- Testo + immagine & 69\% & 0.88 & 186512 & 78\% & 58\% \\
+EmotionExpress & Testo & 60\%  & 1.12 & 187167  & 72\% & 40\%  \\
+EmotionShout & Immagine & 61\% & 1.06 & 24063 & 76\% & 45\% \\
+EmotionNorm & Testo, immagine & 69\% & 0.88 & 186512 & 78\% & 58\% \\
 \bottomrule
 \end{tabular}
 \caption{Risultati sperimentali tra modelli differenti}
@@ -515,7 +516,7 @@ Ottenendo così i seguenti risultati, che riportano il modello con testo e immag
 \end{table}
 
 
-I modelli presi in esame di testo e immagine per la tabella sono i migliori che abbiamo prodotto e sono disponibili nei notebook \verb|image_model.ipynb| e \verb|image_model.ipynb|. La fusione dei due modelli porta quindi ha una miglioria su ogni parametro: in particolare abbiamo un +8\% su accuracy, -0.18 su loss (NB: non è considerato un parametro confrontabile), +2\% su precision e +13\% su recall. I parametri del modello concatenato si allineano a quelli del testo. Abbiamo quindi mostrato che se vengono concatenati due modelli che vogliono estrapolare la stessa feature migliorano tutti i parametri.
+I modelli presi in esame di testo e immagine per la tabella sono i migliori che abbiamo prodotto e sono disponibili nei notebook \verb|image_model.ipynb| e \verb|text_model.ipynb|. La fusione dei due modelli porta quindi ha una miglioria su ogni parametro: in particolare abbiamo un +8\% su accuracy, -0.18 su loss (NB: non è considerato un parametro confrontabile), +2\% su precision e +13\% su recall. I parametri del modello concatenato si allineano a quelli del testo. Abbiamo quindi mostrato che se vengono concatenati due modelli che vogliono estrapolare la stessa feature migliorano tutti i parametri.
 
 \section{Discussione e Conclusioni}
 I risultati ottenuti confermano l'efficacia del nostro modello multimodale nel problema dell'emotion detection. Tuttavia, vi sono ancora margini di miglioramento.
