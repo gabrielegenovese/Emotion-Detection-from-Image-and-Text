@@ -23,7 +23,7 @@ The data used in this project are the following:
 
 ## Documentation
 
-The documentation of the project is available [here](https://emotion-detection-from-image-and-text-gabrigeno-0342883c89cf315.gitlab.io/main.pdf) or you can generete it with:
+The documentation of the project is available [here](https://gabrielegenovese.github.io/Emotion-Detection-from-Image-and-Text/main.pdf) or you can generete it with:
 
 ```bash
 cd docs
