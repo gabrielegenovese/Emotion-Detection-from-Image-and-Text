@@ -17,7 +17,7 @@ pages:
     - cp main.pdf public
   artifacts:
     paths:
-      - docs
+      - public
   only:
     - main
 
