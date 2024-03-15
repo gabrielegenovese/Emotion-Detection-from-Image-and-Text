@@ -14,10 +14,9 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - cp main.pdf public
+    - cp docs/main.pdf public
   artifacts:
     paths:
       - public
   only:
     - main
-

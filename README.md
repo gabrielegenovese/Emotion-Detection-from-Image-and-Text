@@ -19,8 +19,8 @@ The data used in this project are the following:
 - **Processed Data**: location of the custom dataset created with a script
 
 ## Future works
-- Use a confusion matrix to really understand precision and recall matrics
-- Create a custom layer to set a weight to the text and image input for each emotion
+- Use a confusion matrix to really understand precision and recall metrics
+- Create a custom layer to set a weight to the text and image input for each emotion (i.e. text should be more weightened than image for surprise)
 - Explore ramdoness for image data and for emotion (see `random-emotion` branch)
 
 ## Contact
