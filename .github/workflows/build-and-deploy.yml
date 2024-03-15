@@ -23,7 +23,8 @@ jobs:
     - name: Compile PDF
       uses: xu-cheng/latex-action@v3
       with:
-        root_file: docs/main.tex
+        working_directory: docs
+        root_file: main.tex
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v2
