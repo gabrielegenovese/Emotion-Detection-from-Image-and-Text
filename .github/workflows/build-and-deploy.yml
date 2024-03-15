@@ -13,13 +13,6 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v2
 
-    - name: debug
-      run: ls 
-
-
-    - name: debug2
-      run: ls docs
-      
     - name: Compile PDF
       uses: xu-cheng/latex-action@v3
       with:
@@ -43,4 +36,4 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: main-pdf
-        path: public
+        path: docs 
