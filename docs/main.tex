@@ -227,7 +227,7 @@ output_layer = layers.Dense(len(label_encoder.classes_), activation='softmax')(d
 
 model = models.Model(inputs=[text_input, image_input], outputs=output_layer)
 
-optimizer = Adam(learning_rate=0.0001)
+optimizer = Adam(learning_rate=0.001)
 model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 model.summary()
 
@@ -455,7 +455,6 @@ Nel quarto modello sono stati applicati dei filtri sulla lunghezza delle frasi, 
 
 \bigskip
 
-
 Nel quinto modello abbiamo migliorato il preprocessing del testo applicando diverse funzioni per il miglioramento del testo da analizzare. Anche in questo caso abbiamo ottenuto una accuracy del 63\% e una loss di 1.08.
 
 \bigskip
@@ -516,9 +515,7 @@ Ottenendo così i seguenti risultati, che riportano il modello con testo e immag
 \end{table}
 
 
-I modelli presi in esame di testo e immagine per la tabella sono i migliori che abbiamo prodotto. La fusione dei due modelli porta quindi ha una miglioria su ogni parametro: in particolare abbiamo un +8\% su accuracy, -0.18 su loss, +2\% su precision e +13\% su recall. I parametri del modello concatenato si allineano a quelli del testo. Abbiamo quindi mostrato che se vengono concatenati due modelli che vogliono estrapolare la stessa feature migliorano tutti i parametri.
-
-\newpage 
+I modelli presi in esame di testo e immagine per la tabella sono i migliori che abbiamo prodotto e sono disponibili nei notebook \verb|image_model.ipynb| e \verb|image_model.ipynb|. La fusione dei due modelli porta quindi ha una miglioria su ogni parametro: in particolare abbiamo un +8\% su accuracy, -0.18 su loss (NB: non è considerato un parametro confrontabile), +2\% su precision e +13\% su recall. I parametri del modello concatenato si allineano a quelli del testo. Abbiamo quindi mostrato che se vengono concatenati due modelli che vogliono estrapolare la stessa feature migliorano tutti i parametri.
 
 \section{Discussione e Conclusioni}
 I risultati ottenuti confermano l'efficacia del nostro modello multimodale nel problema dell'emotion detection. Tuttavia, vi sono ancora margini di miglioramento.

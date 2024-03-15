@@ -9,13 +9,19 @@ The documentation of the project is available [here](https://emotion-detection-f
 2. If you want to recreate the dataset follow the next steps
 3. Download the image dataset from this [link](https://www.kaggle.com/datasets/msambare/fer2013?resource=download)
 4. Use `./src/scripts/custom_unzip.sh [/path/to/archive.zip]` to unzip the images' archive correctly
-5. If you want to regenerate the processed datased, use `./src/scripts/merge_dataset.py`
-6. Use the notebook to run the project
+5. If you want to regenerate the processed dataset, use `./src/scripts/merge_dataset.py`
+6. zip all the data with `zip -r data.zip data` and upload the archive on Google Drive
+7. Use the notebook on Google Colab to run the project
 
 ## Data
 The data used in this project are the following:
 - **Raw Data**: location of the Ekmann dataset and Kaggle's image dataset
 - **Processed Data**: location of the custom dataset created with a script
+
+## Future works
+- Use a confusion matrix to really understand precision and recall matrics
+- Create a custom layer to set a weight to the text and image input for each emotion
+- Explore ramdoness for image data and for emotion (see `random-emotion` branch)
 
 ## Contact
 Gabriele Genovese - gabriele.genovese2@studio.unibo.it

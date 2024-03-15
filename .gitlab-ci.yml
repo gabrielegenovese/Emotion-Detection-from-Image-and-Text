@@ -5,19 +5,16 @@ stages:
 compile_pdf:
   stage: build
   image: timnn/texlive
-  script: cd docs && pdflatex main.tex && pdflatex main.tex
+  script: cd docs && pdflatex main.tex
   artifacts:
     paths:
       - docs/main.pdf
 
 pages:
   stage: deploy
-  script:
-    - mkdir public
-    - cp docs/main.pdf public
   artifacts:
     paths:
-      - public
+      - docs
   only:
     - main
 
