@@ -14,12 +14,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Compile PDF
-      uses: docker://timnn/texlive
+      uses: xu-cheng/latex-action@v3
       with:
-        args: |
-          cd docs
-          pdflatex main.tex
-          pdflatex main.tex
+        root_file: docs/main.tex
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v2
