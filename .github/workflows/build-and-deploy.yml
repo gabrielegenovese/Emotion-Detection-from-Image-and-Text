@@ -13,13 +13,17 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v2
 
-    - name: Change to docs directory
-      run: cd docs
+    - name: debug
+      run: ls 
 
+
+    - name: debug2
+      run: ls docs
+      
     - name: Compile PDF
       uses: xu-cheng/latex-action@v3
       with:
-        root_file: main.tex
+        root_file: docs/main.tex
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v2
