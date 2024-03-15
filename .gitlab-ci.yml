@@ -12,6 +12,9 @@ compile_pdf:
 
 pages:
   stage: deploy
+  script:
+    - mkdir public
+    - cp main.pdf public
   artifacts:
     paths:
       - docs
